@@ -15,6 +15,16 @@ The main objective of this repo is to predict and localize the keypoint/landmark
 
 Facial landmarks vary greatly from one individual to another, there is lots of variations because of the 3-D pose, face size, weight, perspective so that it is really challenging taks. Moreover, computer vision research has come a long way in addressing these difficulties, but there remain many opportunities for improvement [1]. In this repository, I implemented both custom convolutional neural network and ResNet152, VGG19 to detect landmarks on YouTube Faces Dataset (link is provided below). It is a dataset that contains 3,425 face videos designed for studying the problem of unconstrained face recognition in videos. These videos have been fed through processing steps and turned into sets of image frames containing one face and the associated keypoints [2]. 
 
+
+----
+Here are some samples from my custom facial landmark detector:
+ 
+![DetectedLandmarks2](https://user-images.githubusercontent.com/53329652/105414611-c6582c00-5c48-11eb-9ccd-249e9b8ea5a8.png)
+![DetectedLandmarks](https://user-images.githubusercontent.com/53329652/105414617-c7895900-5c48-11eb-961f-652697cbdf0f.png)
+
+
+
+
 As a image augmentation, the following techniques are utilized.
 * RandomCrop
 * ColorJitter
@@ -42,28 +52,17 @@ SmoothL1Loss is used a a loss function, uses a squared term if the absolute elem
 
 Then, adaptive learning rate schedulers is used (ReduceLROnPlateau) to monitor the validation loss. (Decrease learning rate if model stops improvements).
 
-Finally, the OpenCV packages Face CascadeClassifier is utilized to get bounding boxe of frames from natural images to test our model on unseed natural data.
+Finally, the OpenCV packages Face CascadeClassifier is utilized to get bounding box of input images to test our model on unseed natural data.
 
 Also, note that ResNet152 and VGG19 are also utilized to extract features from our data to do experiments with multiple models so that comparing which models gives best results.
 - - - -
 
-Here are some samples from my custom facial landmark detector:
- 
-
-![DetectedLandmarks2](https://user-images.githubusercontent.com/53329652/105414611-c6582c00-5c48-11eb-9ccd-249e9b8ea5a8.png)
-![DetectedLandmarks](https://user-images.githubusercontent.com/53329652/105414617-c7895900-5c48-11eb-961f-652697cbdf0f.png)
-
-
-
 Dataset Link: https://www.cs.tau.ac.il/~wolf/ytfaces/
-
 
 
 Reference Links
 
 [1] https://www.kaggle.com/c/facial-keypoints-detection
-
 [2] https://towardsdatascience.com/facial-keypoint-detection-using-cnn-pytorch-2f7099bf0347
-
 [3] https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html
 
