@@ -70,7 +70,7 @@ Dataset Link: https://www.cs.tau.ac.il/~wolf/ytfaces/
 
 Reference Links
 
-[1] [https://www.kaggle.com/c/facial-keypoints-detection]
+[1] [https://www.kaggle.com/c/facial-keypoints-detection
 
 [2] https://towardsdatascience.com/facial-keypoint-detection-using-cnn-pytorch-2f7099bf0347
 
