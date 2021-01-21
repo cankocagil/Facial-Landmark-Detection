@@ -12,19 +12,18 @@ The main objective of this repo is to predict and localize the keypoint/landmark
   * Detection of Dysmorphic Facial Signs for Medical Diagnosis
   * Deep Fakes
 
-
 Facial landmarks vary greatly from one individual to another, there is lots of variations because of the 3-D pose, face size, weight, perspective so that it is really challenging task in the context of computer vision. Recently, computer vision research has come a long way in addressing these difficulties, but there remain many opportunities for improvement [1]. In this repository, I implemented both custom  and pretrained (ResNet152, VGG19) convolutional neural network to detect landmarks on YouTube Faces Dataset (link is provided below). It is a dataset that contains 3,425 face videos designed for studying the problem of unconstrained face recognition in videos. These videos have been fed through processing steps and turned into sets of image frames containing one face and the associated keypoints [2]. 
 
 
-| Packages      |   Versions
-| ------------- | ------------- |
-| PyTorch       | 1.7.0+cu101   | 
-| Torchvision   | 0.8.1+cu101   |
-| NumPy         | 1.19.5        |
-| OpenCV        | 4.1.2         |
-| Pandas        | 1.1.5         |
-| Pillow        | 7.0.0         |
-| scikit-image  | 0.16.2        |
+                                                                | Packages      |   Versions    |
+                                                                | ------------- | ------------- |
+                                                                | PyTorch       | 1.7.0+cu101   | 
+                                                                | Torchvision   | 0.8.1+cu101   |
+                                                                | NumPy         | 1.19.5        |
+                                                                | OpenCV        | 4.1.2         |
+                                                                | Pandas        | 1.1.5         |
+                                                                | Pillow        | 7.0.0         |
+                                                                | scikit-image  | 0.16.2        |
 
 
 ----
