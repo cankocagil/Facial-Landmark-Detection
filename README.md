@@ -15,15 +15,15 @@ The main objective of this repo is to predict and localize the keypoint/landmark
 Facial landmarks vary greatly from one individual to another, there is lots of variations because of the 3-D pose, face size, weight, perspective so that it is really challenging task in the context of computer vision. Recently, computer vision research has come a long way in addressing these difficulties, but there remain many opportunities for improvement [1]. In this repository, I implemented both custom  and pretrained (ResNet152, VGG19) convolutional neural network to detect landmarks on YouTube Faces Dataset (link is provided below). It is a dataset that contains 3,425 face videos designed for studying the problem of unconstrained face recognition in videos. These videos have been fed through processing steps and turned into sets of image frames containing one face and the associated keypoints [2]. 
 
 
-                                                                | Packages      |   Versions    |
-                                                                | ------------- | ------------- |
-                                                                | PyTorch       | 1.7.0+cu101   | 
-                                                                | Torchvision   | 0.8.1+cu101   |
-                                                                | NumPy         | 1.19.5        |
-                                                                | OpenCV        | 4.1.2         |
-                                                                | Pandas        | 1.1.5         |
-                                                                | Pillow        | 7.0.0         |
-                                                                | scikit-image  | 0.16.2        |
+| Packages      |   Versions    |
+| ------------- | ------------- |
+| PyTorch       | 1.7.0+cu101   | 
+| Torchvision   | 0.8.1+cu101   |
+| NumPy         | 1.19.5        |
+| OpenCV        | 4.1.2         |
+| Pandas        | 1.1.5         |
+| Pillow        | 7.0.0         |
+| Scikit-Image  | 0.16.2        |
 
 
 ----
@@ -31,8 +31,6 @@ Here are some samples from my custom facial landmark detector:
  
 ![DetectedLandmarks2](https://user-images.githubusercontent.com/53329652/105414611-c6582c00-5c48-11eb-9ccd-249e9b8ea5a8.png)
 ![DetectedLandmarks](https://user-images.githubusercontent.com/53329652/105414617-c7895900-5c48-11eb-961f-652697cbdf0f.png)
-
-
 
 
 As a image augmentation, the following techniques are utilized.
@@ -52,13 +50,13 @@ As a feature extractor, I implemented custom CNN with the following convolutiona
 
 Then, extracted features follows the fully connected blocks with the following block type (2 pieces),
 
-* nn.Linear(in_ftrs,out_ftrs) -> nn.BatchNorm1d(num_features=out_ftrs) -> nn.ReLU() -> nn.Dropout(p)
+* nn.Linear(in_ftrs,out_ftrs) -> nn.BatchNorm1d(out_ftrs) -> nn.ReLU() -> nn.Dropout(p)
 
 Lastly, linear layer is added at the end of the fully connected block to predict continious keypoint values.
 
-In my custom model, there are 6,984,840 trainable parameters that should be optimized by Adam optimizer with learning rate 0.001.
+In my custom model, there are 6,984,840 (≈ 7 million) trainable parameters that should be optimized by Adam optimizer with learning rate 0.001.
 
-SmoothL1Loss is used a a loss function, uses a squared term if the absolute element-wise error falls below beta and an L1 term otherwise. It is less sensitive to outliers than the MSELoss and in some cases prevents exploding gradients (e.g. see Fast R-CNN paper by Ross Girshick) and also known as the Huber loss. [3]
+SmoothL1Loss is used a a loss function, uses a squared term if the absolute element-wise error falls below beta and an L1 term otherwise. It is less sensitive to outliers than the MSELoss and in some cases prevents exploding gradients (e.g. see Fast R-CNN paper by Ross Girshick) and also known as the Huber loss [3].
 
 Then, adaptive learning rate scheduler is used (ReduceLROnPlateau) to monitor the validation loss. (Decrease learning rate if model stops improvements).
 
