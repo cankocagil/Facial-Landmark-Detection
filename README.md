@@ -1,4 +1,4 @@
-# FacialLandmarkDetection
+# Facial Landmark Detection
 
 
 ## In Brief, ##
