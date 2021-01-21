@@ -13,7 +13,7 @@ The main objective of this repo is to predict and localize the keypoint/landmark
   * Deep Fakes
 
 
-Facial landmarks vary greatly from one individual to another, there is lots of variations because of the 3-D pose, face size, weight, perspective so that it is really challenging taks. Moreover, computer vision research has come a long way in addressing these difficulties, but there remain many opportunities for improvement [1]. In this repository, I implemented both custom convolutional neural network and ResNet152, VGG19 to detect landmarks on YouTube Faces Dataset (link is provided below). It is a dataset that contains 3,425 face videos designed for studying the problem of unconstrained face recognition in videos. These videos have been fed through processing steps and turned into sets of image frames containing one face and the associated keypoints [2]. 
+Facial landmarks vary greatly from one individual to another, there is lots of variations because of the 3-D pose, face size, weight, perspective so that it is really challenging task in the context of computer vision. Recently, computer vision research has come a long way in addressing these difficulties, but there remain many opportunities for improvement [1]. In this repository, I implemented both custom  and pretrained (ResNet152, VGG19) convolutional neural network to detect landmarks on YouTube Faces Dataset (link is provided below). It is a dataset that contains 3,425 face videos designed for studying the problem of unconstrained face recognition in videos. These videos have been fed through processing steps and turned into sets of image frames containing one face and the associated keypoints [2]. 
 
 
 ----
@@ -46,11 +46,11 @@ Then, extracted features follows the fully connected blocks with the following b
 
 Lastly, linear layer is added at the end of the fully connected block to predict continious keypoint values.
 
-In my custom model, there are 6,984,840 traniable parameters that should be optimized by Adam optimizer with learning rate 0.001.
+In my custom model, there are 6,984,840 trainable parameters that should be optimized by Adam optimizer with learning rate 0.001.
 
 SmoothL1Loss is used a a loss function, uses a squared term if the absolute element-wise error falls below beta and an L1 term otherwise. It is less sensitive to outliers than the MSELoss and in some cases prevents exploding gradients (e.g. see Fast R-CNN paper by Ross Girshick) and also known as the Huber loss. [3]
 
-Then, adaptive learning rate schedulers is used (ReduceLROnPlateau) to monitor the validation loss. (Decrease learning rate if model stops improvements).
+Then, adaptive learning rate scheduler is used (ReduceLROnPlateau) to monitor the validation loss. (Decrease learning rate if model stops improvements).
 
 Finally, the OpenCV packages Face CascadeClassifier is utilized to get bounding box of input images to test our model on unseed natural data.
 
@@ -63,6 +63,8 @@ Dataset Link: https://www.cs.tau.ac.il/~wolf/ytfaces/
 Reference Links
 
 [1] https://www.kaggle.com/c/facial-keypoints-detection
+
 [2] https://towardsdatascience.com/facial-keypoint-detection-using-cnn-pytorch-2f7099bf0347
+
 [3] https://pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html
 
